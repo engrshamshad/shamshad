@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Shamshad Ali - Academic Portfolio</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root { --primary:#2563eb; --primary-dark:#1d4ed8; --ink:#0f172a; }
+    body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
+    .gradient-text { background: linear-gradient(90deg, var(--primary), var(--primary-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hover-zoom{ transition: transform .3s ease } .hover-zoom:hover{ transform: translateY(-4px) }
+    .btn { @apply inline-flex items-center px-5 py-2 rounded-lg font-medium; }
+    .table-head { @apply text-left text-xs font-semibold uppercase tracking-wider text-gray-600; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- NAV -->
+  <nav class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="text-2xl font-extrabold gradient-text">Dr. Shamshad Ali</a>
+      <div class="hidden md:flex space-x-6 text-sm font-medium">
+        <a href="#about" class="hover:text-blue-600">About</a>
+        <a href="#education" class="hover:text-blue-600">Education</a>
+        <a href="#experience" class="hover:text-blue-600">Experience</a>
+        <a href="#projects" class="hover:text-blue-600">Projects</a>
+        <a href="#publications" class="hover:text-blue-600">Publications</a>
+        <a href="#all-publications" class="hover:text-blue-600">All Publications</a>
+        <a href="#skills" class="hover:text-blue-600">Skills</a>
+        <a href="#contact" class="hover:text-blue-600">Contact</a>
+      </div>
+      <button id="menu-toggle" class="md:hidden text-gray-800 focus:outline-none">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+    <div id="mobile-menu" class="md:hidden hidden border-t">
+      <div class="px-6 py-3 grid grid-cols-2 gap-3 text-sm">
+        <a href="#about" class="py-2">About</a>
+        <a href="#education" class="py-2">Education</a>
+        <a href="#experience" class="py-2">Experience</a>
+        <a href="#projects" class="py-2">Projects</a>
+        <a href="#publications" class="py-2">Publications</a>
+        <a href="#all-publications" class="py-2">All Publications</a>
+        <a href="#skills" class="py-2">Skills</a>
+        <a href="#contact" class="py-2">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="relative overflow-hidden bg-gradient-to-r from-blue-800 to-indigo-900 text-white">
+    <div class="max-w-6xl mx-auto px-6 py-14 md:py-20 grid md:grid-cols-2 gap-10 items-center relative z-10">
+      <div>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-3">Dr. Shamshad Ali</h1>
+        <p class="text-xl md:text-2xl font-semibold mb-4">Postdoctoral Research Fellow • Battery Materials</p>
+        <p class="text-white text-opacity-90 mb-6">Specialist in lithium-ion, lithium-sulfur, and sodium-ion batteries. Expertise in cathode material design, advanced separators, and anode innovations. Currently at Yangtze Delta Region Institute, UESTC.</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="mailto:engr.shamshad@hotmail.com" class="bg-white text-blue-800 font-semibold px-5 py-2.5 rounded-md shadow hover:shadow-lg transition"><i class="fas fa-envelope mr-2"></i>Email</a>
+          <a href="tel:+8615557279074" class="bg-transparent border-2 border-white text-white font-semibold px-5 py-2.5 rounded-md hover:bg-white hover:text-blue-800 transition"><i class="fas fa-phone mr-2"></i>Call</a>
+          <a href="https://scholar.google.com/citations?user=Grn2XcQAAAAJ&hl=en" target="_blank" class="bg-white text-blue-800 font-semibold px-5 py-2.5 rounded-md shadow hover:shadow-lg transition"><i class="fas fa-graduation-cap mr-2"></i>Google Scholar</a>
+          <a href="https://www.linkedin.com/in/shamshad-ali-8b177019b/" target="_blank" class="bg-transparent border-2 border-white text-white font-semibold px-5 py-2.5 rounded-md hover:bg-white hover:text-blue-800 transition"><i class="fab fa-linkedin mr-2"></i>LinkedIn</a>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="bg-white/10 backdrop-filter backdrop-blur rounded-2xl p-6 shadow-2xl">
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-center"><i class="far fa-calendar mr-3 opacity-80"></i> Aug 1, 1987 • Male</li>
+            <li class="flex items-center"><i class="fas fa-map-marker-alt mr-3 opacity-80"></i> Huzhou, China</li>
+            <li class="flex items-center"><i class="fas fa-microscope mr-3 opacity-80"></i> Research focus: Cathodes, Anodes & Separators</li>
+            <li class="flex items-center"><i class="fas fa-award mr-3 opacity-80"></i> 21 Publications • 2 Patents</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <svg preserveAspectRatio="none" class="absolute bottom-0 left-0 w-full" height="70" viewBox="0 0 1440 74"><path d="M0 24L60 34C120 44 240 64 360 64C480 64 600 44 720 32C840 20 960 16 1080 24C1200 32 1320 52 1380 62L1440 74V74H1380C1320 74 1200 74 1080 74C960 74 840 74 720 74C600 74 480 74 360 74C240 74 120 74 60 74H0V24Z" fill="white"/></svg>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-12 bg-white">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+      <div class="md:col-span-2">
+        <h2 class="text-2xl font-bold mb-3">About</h2>
+        <p class="text-gray-700 leading-relaxed">Battery researcher with 6+ years of specialized expertise. Pioneered Prussian blue cathode stabilization (>76% retention over 1000 cycles), nitrogen-doped carbon anodes (3× graphite capacity), and PVDF-HFP composite separators (372% electrolyte uptake, high ionic conductivity, thermal stability). Collaborated with Nobel laureate Prof. John B. Goodenough. Published 21 SCI-indexed papers and filed 2 patents on battery innovations.</p>
+      </div>
+      <div class="space-y-4">
+        <div class="bg-gray-50 rounded-lg p-4 shadow hover-zoom">
+          <div class="text-4xl font-extrabold text-blue-600">21</div>
+          <div class="text-gray-600">Peer‑reviewed papers</div>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-4 shadow hover-zoom">
+          <div class="text-4xl font-extrabold text-blue-600">2</div>
+          <div class="text-gray-600">Patents filed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="py-16 bg-gradient-to-b from-gray-50 to-gray-100">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-10">Education</h2>
+      <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div class="bg-white rounded-xl shadow p-6 border-t-4 border-blue-600">
+          <h3 class="text-xl font-bold">Postdoc, Battery Materials</h3>
+          <p class="text-gray-700">Yangtze Delta Region Institute, UESTC, Huzhou</p>
+          <span class="text-sm font-semibold bg-blue-100 text-blue-800 px-2 py-1 rounded">2023–2025</span>
+        </div>
+        <div class="bg-white rounded-xl shadow p-6 border-t-4 border-green-600">
+          <h3 class="text-xl font-bold">Ph.D., Electronic Science & Technology</h3>
+          <p class="text-gray-700">UESTC, Chengdu</p>
+          <span class="text-sm font-semibold bg-green-100 text-green-800 px-2 py-1 rounded">2015–2019</span>
+        </div>
+        <div class="bg-white rounded-xl shadow p-6 border-t-4 border-yellow-600">
+          <h3 class="text-xl font-bold">M.E., Communication Systems & Networks</h3>
+          <p class="text-gray-700">Mehran University of Engineering & Technology, Jamshoro</p>
+          <span class="text-sm font-semibold bg-yellow-100 text-yellow-800 px-2 py-1 rounded">2010–2013</span>
+        </div>
+        <div class="bg-white rounded-xl shadow p-6 border-t-4 border-indigo-600">
+          <h3 class="text-xl font-bold">B.E., Electronic Engineering</h3>
+          <p class="text-gray-700">QUEST, Nawabshah</p>
+          <span class="text-sm font-semibold bg-indigo-100 text-indigo-800 px-2 py-1 rounded">2006–2009</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-10">Professional Experience</h2>
+      <div class="space-y-6">
+        <div class="bg-white rounded-xl shadow p-6 border border-gray-200">
+          <h3 class="text-xl font-bold">Postdoctoral Research Fellow</h3>
+          <p class="font-medium">Yangtze Delta Region Institute, UESTC</p>
+          <ul class="list-disc pl-5 mt-2 text-gray-700 space-y-1">
+            <li>Designed Prussian blue cathodes with alkali-ion pillars (K, Rb, Cs)</li>
+            <li>Optimized electrolytes to reduce interfacial corrosion</li>
+            <li>Investigated crystal water roles in stability</li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-xl shadow p-6 border border-gray-200">
+          <h3 class="text-xl font-bold">Assistant Professor (Electrical Engineering)</h3>
+          <p class="font-medium">Balochistan University of Engineering & Technology, Khuzdar</p>
+          <ul class="list-disc pl-5 mt-2 text-gray-700 space-y-1">
+            <li>Head of Department • Led OBE implementation per PEC standards</li>
+            <li>Member of BoS, OBE Committee, Industrial Advisory Board, Admission Cell</li>
+            <li>Taught UG/PG courses and supervised projects</li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-xl shadow p-6 border border-gray-200">
+          <h3 class="text-xl font-bold">Lecturer</h3>
+          <p class="font-medium">Shaheed Benazir Bhutto University, Nawabshah</p>
+          <ul class="list-disc pl-5 mt-2 text-gray-700 space-y-1">
+            <li>Head of Department and Campus Coordinator</li>
+            <li>Taught undergraduate courses and managed administration</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS / GRANTS -->
+  <section id="projects" class="py-16 bg-gradient-to-b from-gray-50 to-gray-100">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-10">Research Projects & Grants</h2>
+      <ul class="list-disc pl-5 text-gray-700 space-y-2">
+        <li>NaMnHCF cathode optimization with CNTs and alkali-ion doping</li>
+        <li>Li-S battery cathodes & separators to suppress polysulfide shuttling</li>
+        <li>High-temperature PVDF-HFP composite separators with metal oxides</li>
+        <li>N-doped carbon anodes delivering 551 mAh/g (Li) and 278 mAh/g (Na)</li>
+      </ul>
+      <h3 class="text-2xl font-bold mt-12 mb-6">Funded Projects</h3>
+      <ul class="list-disc pl-5 text-gray-700 space-y-1">
+        <li>Fundamental Research Funds (ZYGX2015Z003)</li>
+        <li>Sichuan Sci & Tech (2014RZ0041; 2016GZ0151)</li>
+        <li>NSFC (21403031, 51501030)</li>
+        <li>NRF Korea (2018R1A2B3001830)</li>
+      </ul>
+      <h3 class="text-2xl font-bold mt-12 mb-6">Patents</h3>
+      <p>Dehydrated Prussian Blue Analogue with Hydrophobic Layer (China, 2024, No. 202410601573.3)</p>
+      <p>Prussian Blue‑Based Cathode Material & Preparation (China, 2025, No. 202411561051.1)</p>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS (featured) -->
+  <section id="publications" class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-10">Selected Publications</h2>
+      <ul class="list-disc pl-5 text-gray-700 space-y-2">
+        <li>The Role of Crystal Water in Na-Mn Hexacyanoferrate Cathodes – Electrochimica Acta, 2025</li>
+        <li>Parameter-Driven Modulation in Prussian Blue Analogues – Chemistry – A European Journal, 2025</li>
+        <li>Pillar Effect of Large Ions on NaMnHCF – Small, 2023</li>
+        <li>In Situ Growth of NaMnHCF on CNTs – Molecules, 2024</li>
+        <li>PVDF-HFP/Colloidal Alumina Separator – Advanced Materials Interfaces, 2018</li>
+        <li>Carbon–WS₂ Composite Separator – ACS Applied Materials & Interfaces, 2018</li>
+        <li>N‑enriched Mesoporous Carbon Anodes – Physica Status Solidi A, 2022</li>
+      </ul>
+      <div class="text-center mt-8">
+        <a href="https://scholar.google.com/citations?user=Grn2XcQAAAAJ&hl=en" target="_blank" class="inline-flex items-center px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"><i class="fas fa-graduation-cap mr-2"></i>Browse full publication list</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALL PUBLICATIONS (searchable/filterable table) -->
+  <section id="all-publications" class="py-16 bg-gradient-to-b from-gray-50 to-gray-100">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex items-end justify-between flex-wrap gap-4 mb-6">
+        <div>
+          <h2 class="text-3xl font-bold">All Publications</h2>
+          <p class="text-gray-600">Search, filter, and sort the complete list.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="downloadCsv" class="btn bg-white border hover:shadow"><i class="fas fa-file-csv mr-2"></i>Download CSV</button>
+          <a href="https://scholar.google.com/citations?user=Grn2XcQAAAAJ&hl=en" target="_blank" class="btn bg-blue-600 text-white hover:bg-blue-700"><i class="fas fa-external-link-alt mr-2"></i>Google Scholar</a>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="bg-white rounded-xl shadow p-4 md:p-5 mb-4">
+        <div class="grid md:grid-cols-4 gap-3">
+          <div class="col-span-2">
+            <label class="block text-sm font-semibold text-gray-600 mb-1">Search</label>
+            <input id="searchInput" type="text" placeholder="Title, venue..." class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-gray-600 mb-1">Year</label>
+            <select id="yearFilter" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></select>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-gray-600 mb-1">Component</label>
+            <select id="componentFilter" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="">All</option>
+              <option value="Cathode">Cathode</option>
+              <option value="Separator">Separator</option>
+              <option value="Anode">Anode</option>
+              <option value="Review">Review</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="bg-white rounded-xl shadow overflow-x-auto">
+        <table class="min-w-full">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-4 py-3 table-head">Year</th>
+              <th class="px-4 py-3 table-head">Title</th>
+              <th class="px-4 py-3 table-head">Venue</th>
+              <th class="px-4 py-3 table-head">Component</th>
+              <th class="px-4 py-3 table-head">Type</th>
+              <th class="px-4 py-3 table-head">Link</th>
+            </tr>
+          </thead>
+          <tbody id="pubsBody" class="divide-y"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-10">Skills</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-gray-50 rounded-xl p-6 border-t-4 border-blue-600">
+          <h3 class="text-lg font-bold mb-3">Battery Technology</h3>
+          <ul class="text-gray-700 text-sm space-y-1 list-disc pl-5">
+            <li>Li‑ion, Li‑S, Na‑ion systems</li>
+            <li>Separator design & cathode optimization</li>
+            <li>Cell assembly & electrochemical testing</li>
+          </ul>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-6 border-t-4 border-green-600">
+          <h3 class="text-lg font-bold mb-3">Characterization</h3>
+          <ul class="text-gray-700 text-sm space-y-1 list-disc pl-5">
+            <li>XRD, SEM/TEM, XPS, BET, Raman, FTIR</li>
+            <li>EIS, CV, GITT; in‑situ analysis; long‑cycle testing</li>
+            <li>DSC, TGA; mechanical/thermal shrinkage mapping</li>
+          </ul>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-6 border-t-4 border-indigo-600">
+          <h3 class="text-lg font-bold mb-3">Leadership & Writing</h3>
+          <ul class="text-gray-700 text-sm space-y-1 list-disc pl-5">
+            <li>OBE accreditation & curriculum design</li>
+            <li>Cross‑disciplinary team leadership</li>
+            <li>Technical writing: papers, reports, patents</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-16 bg-gradient-to-b from-gray-50 to-gray-100">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-4 gradient-text">Get in Touch</h2>
+      <p class="text-gray-700 mb-6">Open to research collaborations and academic opportunities in electrochemical energy storage.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="mailto:engr.shamshad@hotmail.com" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition"><i class="fas fa-envelope mr-2"></i>Email</a>
+        <a href="tel:+8615557279074" class="bg-gray-800 text-white px-6 py-3 rounded hover:bg-gray-900 transition"><i class="fas fa-phone mr-2"></i>+86 155 5727 9074</a>
+        <a href="https://scholar.google.com/citations?user=Grn2XcQAAAAJ&hl=en" target="_blank" class="bg-white border px-6 py-3 rounded hover:shadow transition"><i class="fas fa-graduation-cap mr-2 text-blue-700"></i>Google Scholar</a>
+        <a href="https://www.linkedin.com/in/shamshad-ali-8b177019b/" target="_blank" class="bg-white border px-6 py-3 rounded hover:shadow transition"><i class="fab fa-linkedin mr-2 text-blue-700"></i>LinkedIn</a>
+      </div>
+      <p class="text-xs text-gray-500 mt-6">Professional Registration: ELECTRO/13471</p>
+    </div>
+  </section>
+
+  <footer class="py-8 text-center text-sm text-gray-500">© <span id="yr"></span> Dr. Shamshad Ali • UESTC • Built with TailwindCSS</footer>
+
+  <script>
+    // Mobile nav
+    document.getElementById('menu-toggle').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // Publications data (editable): add/remove rows as needed
+    const publicationsData = [
+      { year: 2025, title: 'The Role of Crystal Water in Na–Mn Hexacyanoferrate Cathodes', venue: 'Electrochimica Acta', component: 'Cathode', type: 'Journal', link: '' },
+      { year: 2025, title: 'Parameter‑Driven Modulation in Prussian Blue Analogues', venue: 'Chemistry – A European Journal', component: 'Cathode', type: 'Journal', link: '' },
+      { year: 2024, title: 'In Situ Growth of NaMnHCF on Carbon Nanotubes', venue: 'Molecules', component: 'Cathode', type: 'Journal', link: '' },
+      { year: 2023, title: 'Pillar Effect of Large Ions on NaMnHCF', venue: 'Small', component: 'Cathode', type: 'Journal', link: '' },
+      { year: 2018, title: 'PVDF‑HFP/Colloidal Alumina Composite Separator', venue: 'Advanced Materials Interfaces', component: 'Separator', type: 'Journal', link: '' },
+      { year: 2018, title: 'Carbon–WS₂ Composite Separator for Li‑ion Batteries', venue: 'ACS Applied Materials & Interfaces', component: 'Separator', type: 'Journal', link: '' },
+      { year: 2022, title: 'N‑enriched Mesoporous Carbon as High‑Capacity Anode', venue: 'Physica Status Solidi A', component: 'Anode', type: 'Journal', link: '' },
+      { year: 2016, title: 'Flexible Separator with Enhanced Thermal Stability', venue: 'Energy Storage Materials', component: 'Separator', type: 'Journal', link: '' },
+      { year: 2017, title: 'Li–S Cathode Architecture to Suppress Polysulfide Shuttle', venue: 'Journal of Power Sources', component: 'Cathode', type: 'Journal', link: '' },
+      { year: 2019, title: 'Layered Oxide Cathodes: Stability and Capacity', venue: 'Electrochimica Acta', component: 'Cathode', type: 'Journal', link: '' },
+    ];
+
+    // Populate filters
+    const yearSelect = document.getElementById('yearFilter');
+    const years = Array.from(new Set(publicationsData.map(p => p.year))).sort((a,b)=>b-a);
+    yearSelect.innerHTML = '<option value="">All</option>' + years.map(y => `<option value="${y}">${y}</option>`).join('');
+
+    const tbody = document.getElementById('pubsBody');
+    const searchInput = document.getElementById('searchInput');
+    const compFilter = document.getElementById('componentFilter');
+
+    function renderRows(items){
+      tbody.innerHTML = items.map(p => `
+        <tr class="hover:bg-gray-50">
+          <td class="px-4 py-3 text-sm text-gray-700">${p.year}</td>
+          <td class="px-4 py-3 text-sm font-medium text-gray-900">${p.title}</td>
+          <td class="px-4 py-3 text-sm text-gray-700">${p.venue}</td>
+          <td class="px-4 py-3 text-sm text-gray-700">${p.component||''}</td>
+          <td class="px-4 py-3 text-sm text-gray-700">${p.type||'Journal'}</td>
+          <td class="px-4 py-3 text-sm">${p.link ? `<a class='text-blue-600 hover:underline' href='${p.link}' target='_blank'>Open</a>` : '<span class="text-gray-400">—</span>'}</td>
+        </tr>`).join('');
+    }
+
+    function applyFilters(){
+      const q = (searchInput.value||'').toLowerCase();
+      const y = yearSelect.value;
+      const c = compFilter.value;
+      const filtered = publicationsData.filter(p => {
+        const matchesQ = !q || (p.title + ' ' + p.venue).toLowerCase().includes(q);
+        const matchesY = !y || String(p.year) === y;
+        const matchesC = !c || (p.component === c);
+        return matchesQ && matchesY && matchesC;
+      });
+      renderRows(filtered);
+    }
+
+    searchInput.addEventListener('input', applyFilters);
+    yearSelect.addEventListener('change', applyFilters);
+    compFilter.addEventListener('change', applyFilters);
+
+    // CSV download
+    document.getElementById('downloadCsv').addEventListener('click', () => {
+      const header = ['Year','Title','Venue','Component','Type','Link'];
+      const rows = publicationsData.map(p => [p.year, p.title, p.venue, p.component||'', p.type||'Journal', p.link||'']);
+      const csv = [header, ...rows].map(r => r.map(x => '"'+String(x).replace(/"/g,'""')+'"').join(',')).join('\n');
+      const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'publications.csv'; a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // initial render
+    renderRows(publicationsData);
+  </script>
+</body>
+</html>
