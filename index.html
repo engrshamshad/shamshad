@@ -3,270 +3,419 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dr. Shamshad Ali - Academic Portfolio</title>
+  <title>Dr. Shamshad Ali - Enhanced Academic Portfolio</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
   <style>
-    :root { --primary:#2563eb; --primary-dark:#1d4ed8; --ink:#0f172a; }
-    body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
-    .gradient-text { background: linear-gradient(90deg, var(--primary), var(--primary-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hover-zoom{ transition: transform .3s ease } .hover-zoom:hover{ transform: translateY(-4px) }
-    .btn { @apply inline-flex items-center px-5 py-2 rounded-lg font-medium; }
-    .table-head { @apply text-left text-xs font-semibold uppercase tracking-wider text-gray-600; }
+    :root { 
+      --primary: #1e40af; 
+      --primary-dark: #1e3a8a; 
+      --accent: #3b82f6;
+      --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+    
+    .gradient-text { 
+      background: linear-gradient(135deg, var(--primary), var(--accent)); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }
+    
+    .hover-lift { 
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+    }
+    .hover-lift:hover { 
+      transform: translateY(-8px) scale(1.02); 
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+    }
+    
+    .glass { 
+      backdrop-filter: blur(16px); 
+      background: rgba(255,255,255,0.1); 
+      border: 1px solid rgba(255,255,255,0.2); 
+    }
+    
+    .floating { 
+      animation: float 6s ease-in-out infinite; 
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .parallax {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+	
+	@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+	
+    
+    .citation-badge {
+      background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+      animation: pulse 2s infinite;
+    }
+    
+    .research-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .research-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+    .research-card:hover::before {
+      left: 100%;
+    }
+    
+    .timeline-item {
+      position: relative;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary), var(--accent));
+      transform: translateX(-50%);
+    }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-  <!-- NAV -->
-  <nav class="bg-white shadow sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="#" class="text-2xl font-extrabold gradient-text">Dr. Shamshad Ali</a>
-      <div class="hidden md:flex space-x-6 text-sm font-medium">
-        <a href="#about" class="hover:text-blue-600">About</a>
-        <a href="#education" class="hover:text-blue-600">Education</a>
-        <a href="#experience" class="hover:text-blue-600">Experience</a>
-        <a href="#projects" class="hover:text-blue-600">Projects</a>
-        <a href="#publications" class="hover:text-blue-600">Publications</a>
-        <a href="#all-publications" class="hover:text-blue-600">All Publications</a>
-        <a href="#skills" class="hover:text-blue-600">Skills</a>
-        <a href="#contact" class="hover:text-blue-600">Contact</a>
+
+<body class="bg-gray-50 text-gray-900">
+  <!-- NAVIGATION -->
+  <nav class="bg-white/95 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-4">
+          <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+            <span class="text-white font-bold">SA</span>
+          </div>
+          <div>
+            <h1 class="text-xl font-bold gradient-text">Dr. Shamshad Ali</h1>
+            <p class="text-xs text-gray-500">Battery Materials Researcher</p>
+          </div>
+        </div>
+        
+        <div class="hidden lg:flex space-x-8 text-sm font-medium">
+          <a href="#about" class="hover:text-blue-600 transition">About</a>
+          <a href="#research" class="hover:text-blue-600 transition">Research</a>
+          <a href="#experience" class="hover:text-blue-600 transition">Experience</a>
+			<a href="#skills" class="hover:text-blue-600 transition">Skills</a>
+          <a href="#publications" class="hover:text-blue-600 transition">Publications</a>
+          <a href="#awards" class="hover:text-blue-600 transition">Awards</a>
+          <a href="#gallery" class="hover:text-blue-600 transition">Gallery</a>
+          <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
+        </div>
+        
+        <button id="mobile-menu-btn" class="lg:hidden p-2">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
       </div>
-      <button id="menu-toggle" class="md:hidden text-gray-800 focus:outline-none">
-        <i class="fas fa-bars text-2xl"></i>
-      </button>
     </div>
-    <div id="mobile-menu" class="md:hidden hidden border-t">
-      <div class="px-6 py-3 grid grid-cols-2 gap-3 text-sm">
-        <a href="#about" class="py-2">About</a>
-        <a href="#education" class="py-2">Education</a>
-        <a href="#experience" class="py-2">Experience</a>
-        <a href="#projects" class="py-2">Projects</a>
-        <a href="#publications" class="py-2">Publications</a>
-        <a href="#all-publications" class="py-2">All Publications</a>
-        <a href="#skills" class="py-2">Skills</a>
-        <a href="#contact" class="py-2">Contact</a>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="lg:hidden hidden bg-white border-t">
+      <div class="px-6 py-4 space-y-3">
+        <a href="#about" class="block py-2 hover:text-blue-600">About</a>
+        <a href="#research" class="block py-2 hover:text-blue-600">Research</a>
+        <a href="#experience" class="block py-2 hover:text-blue-600">Experience</a>
+		  <a href="#skills" class="block py-2 hover:text-blue-600">Skills</a>
+        <a href="#publications" class="block py-2 hover:text-blue-600">Publications</a>
+        <a href="#awards" class="block py-2 hover:text-blue-600">Awards</a>
+        <a href="#gallery" class="block py-2 hover:text-blue-600">Gallery</a>
+        <a href="#contact" class="block py-2 hover:text-blue-600">Contact</a>
       </div>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <header class="relative overflow-hidden bg-gradient-to-r from-blue-800 to-indigo-900 text-white">
-    <div class="max-w-6xl mx-auto px-6 py-14 md:py-20 grid md:grid-cols-2 gap-10 items-center relative z-10">
-      <div>
-        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-3">Dr. Shamshad Ali</h1>
-        <p class="text-xl md:text-2xl font-semibold mb-4">Postdoctoral Research Fellow • Battery Materials</p>
-        <p class="text-white text-opacity-90 mb-6">Specialist in lithium-ion, lithium-sulfur, and sodium-ion batteries. Expertise in cathode material design, advanced separators, and anode innovations. Currently at Yangtze Delta Region Institute, UESTC.</p>
-        <div class="flex flex-wrap gap-3">
-          <a href="mailto:engr.shamshad@hotmail.com" class="bg-white text-blue-800 font-semibold px-5 py-2.5 rounded-md shadow hover:shadow-lg transition"><i class="fas fa-envelope mr-2"></i>Email</a>
-          <a href="tel:+8615557279074" class="bg-transparent border-2 border-white text-white font-semibold px-5 py-2.5 rounded-md hover:bg-white hover:text-blue-800 transition"><i class="fas fa-phone mr-2"></i>Call</a>
-          <a href="https://scholar.google.com/citations?user=Grn2XcQAAAAJ&hl=en" target="_blank" class="bg-white text-blue-800 font-semibold px-5 py-2.5 rounded-md shadow hover:shadow-lg transition"><i class="fas fa-graduation-cap mr-2"></i>Google Scholar</a>
-          <a href="https://www.linkedin.com/in/shamshad-ali-8b177019b/" target="_blank" class="bg-transparent border-2 border-white text-white font-semibold px-5 py-2.5 rounded-md hover:bg-white hover:text-blue-800 transition"><i class="fab fa-linkedin mr-2"></i>LinkedIn</a>
+  <!-- HERO SECTION -->
+  <section class="relative min-h-screen flex items-center justify-center parallax" style="background-image: linear-gradient(135deg, rgba(30,64,175,0.9), rgba(59,130,246,0.8)), url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><pattern id=%22grain%22 width=%222%22 height=%222%22 patternUnits=%22userSpaceOnUse%22><circle cx=%221%22 cy=%221%22 r=%220.5%22 fill=%22%23fff%22 opacity=%220.1%22/></pattern></defs><rect width=%22100%22 height=%22100%22 fill=%22url(%23grain)%22/></svg>');">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
+    
+    <div class="relative max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="text-white space-y-6">
+        <div class="space-y-4">
+          <div class="inline-flex items-center space-x-2 bg-white/10 rounded-full px-4 py-2 backdrop-blur">
+            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            <span class="text-sm">Available for Collaboration</span>
+          </div>
+          
+          <h1 class="text-4xl lg:text-5xl font-black leading-tight">
+            Dr. Shamshad Ali
+            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500"> </span>
+          </h1>
+          
+          <p class="text-xl lg:text-2xl font-light text-blue-100 max-w-2xl">
+            Postdoctoral Research Fellow specializing in next-generation battery materials and electrochemical energy storage systems
+          </p>
+        </div>
+        
+        <div class="flex flex-wrap gap-4">
+          <a href="#research" class="bg-white text-blue-900 px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all hover:scale-105">
+            <i class="fas fa-microscope mr-2"></i>My Research
+          </a>
+          <a href="#contact" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-900 transition-all">
+            <i class="fas fa-envelope mr-2"></i>Get in Touch
+          </a>
+          <a href="docs/Shamshad-Ali-CV.pdf" class="bg-red-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-red-600 transition-all citation-badge">
+            <i class="fas fa-download mr-2"></i>Download CV
+          </a>
         </div>
       </div>
+      
+     
+			<!-- Profile Image -->
+<div class="relative">
+  <div class="glass rounded-3xl p-8 floating">
+    <div class="aspect-square bg-gradient-to-br from-white/20 to-white/5 rounded-2xl overflow-hidden border border-white/20">
+      <img src="images/IMG_5012.jpg" alt="Dr. Shamshad Ali" class="w-full h-full object-cover">
+    </div>
+          
+          <!-- Quick Stats -->
+          <div class="mt-6 grid grid-cols-3 gap-4 text-center text-white">
+            <div class="glass rounded-lg p-3">
+              <div class="text-2xl font-bold">21</div>
+              <div class="text-xs opacity-75">Publications</div>
+            </div>
+            <div class="glass rounded-lg p-3">
+              <div class="text-2xl font-bold">2</div>
+              <div class="text-xs opacity-75">Patents</div>
+            </div>
+            <div class="glass rounded-lg p-3">
+              <div class="text-2xl font-bold">6+</div>
+              <div class="text-xs opacity-75">Years Exp.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+      <i class="fas fa-chevron-down text-2xl"></i>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold gradient-text mb-4">About Me</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Pioneering research in battery materials with expertise in cathodes, anodes, and separators for next-generation energy storage systems.
+        </p>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2 space-y-6">
+          <p class="text-lg text-gray-700 leading-relaxed">
+            As a dedicated battery researcher with over 6 years of specialized expertise, I have pioneered breakthrough innovations in electrochemical energy storage. My work includes developing Prussian blue cathodes with exceptional stability (>76% retention over 1000 cycles), creating nitrogen-doped carbon anodes with triple the capacity of traditional graphite, and engineering advanced PVDF-HFP composite separators.
+          </p>
+          
+          <p class="text-lg text-gray-700 leading-relaxed">
+            I've had the privilege of collaborating with Nobel laureate Prof. John B. Goodenough and have contributed to the scientific community through 21 SCI-indexed publications and 2 patents. Currently, I'm advancing sustainable energy solutions at the Yangtze Delta Region Institute, UESTC.
+          </p>
+          
+          <!-- Research Interests -->
+          <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 mt-8">
+            <h3 class="text-xl font-bold mb-4 text-gray-900">Research Interests</h3>
+            <div class="flex flex-wrap gap-3">
+              <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">Lithium-ion Batteries</span>
+              <span class="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium">Sodium-ion Batteries</span>
+              <span class="bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-medium">Lithium-sulfur Systems</span>
+              <span class="bg-orange-100 text-orange-800 px-4 py-2 rounded-full text-sm font-medium">Cathode Materials</span>
+              <span class="bg-red-100 text-red-800 px-4 py-2 rounded-full text-sm font-medium">Advanced Separators</span>
+              <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full text-sm font-medium">Anode Innovation</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Impact Metrics -->
+        <div class="space-y-6">
+          <div class="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-6 text-white hover-lift">
+            <div class="text-3xl font-bold mb-2">965+</div>
+            <div class="text-blue-100">Total Citations</div>
+            <div class="text-sm text-blue-200 mt-2">Google Scholar</div>
+          </div>
+          
+          <div class="bg-gradient-to-br from-green-600 to-teal-600 rounded-2xl p-6 text-white hover-lift">
+            <div class="text-3xl font-bold mb-2">15</div>
+            <div class="text-green-100">H-Index</div>
+            <div class="text-sm text-green-200 mt-2">Research Impact</div>
+          </div>
+          
+          <div class="bg-gradient-to-br from-orange-600 to-red-600 rounded-2xl p-6 text-white hover-lift">
+            <div class="text-3xl font-bold mb-2">5</div>
+            <div class="text-orange-100">Countries</div>
+            <div class="text-sm text-orange-200 mt-2">International Collaboration</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH TIMELINE -->
+  <section id="research" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold gradient-text mb-4">Research Journey</h2>
+        <p class="text-xl text-gray-600">Major milestones and breakthrough discoveries</p>
+      </div>
+      
       <div class="relative">
-        <div class="bg-white/10 backdrop-filter backdrop-blur rounded-2xl p-6 shadow-2xl">
-          <ul class="space-y-3 text-sm">
-            <li class="flex items-center"><i class="far fa-calendar mr-3 opacity-80"></i> Aug 1, 1987 • Male</li>
-            <li class="flex items-center"><i class="fas fa-map-marker-alt mr-3 opacity-80"></i> Huzhou, China</li>
-            <li class="flex items-center"><i class="fas fa-microscope mr-3 opacity-80"></i> Research focus: Cathodes, Anodes & Separators</li>
-            <li class="flex items-center"><i class="fas fa-award mr-3 opacity-80"></i> 21 Publications • 2 Patents</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <svg preserveAspectRatio="none" class="absolute bottom-0 left-0 w-full" height="70" viewBox="0 0 1440 74"><path d="M0 24L60 34C120 44 240 64 360 64C480 64 600 44 720 32C840 20 960 16 1080 24C1200 32 1320 52 1380 62L1440 74V74H1380C1320 74 1200 74 1080 74C960 74 840 74 720 74C600 74 480 74 360 74C240 74 120 74 60 74H0V24Z" fill="white"/></svg>
-  </header>
-
-  <!-- ABOUT -->
-  <section id="about" class="py-12 bg-white">
-    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
-      <div class="md:col-span-2">
-        <h2 class="text-2xl font-bold mb-3">About</h2>
-        <p class="text-gray-700 leading-relaxed">Battery researcher with 6+ years of specialized expertise. Pioneered Prussian blue cathode stabilization (>76% retention over 1000 cycles), nitrogen-doped carbon anodes (3× graphite capacity), and PVDF-HFP composite separators (372% electrolyte uptake, high ionic conductivity, thermal stability). Collaborated with Nobel laureate Prof. John B. Goodenough. Published 21 SCI-indexed papers and filed 2 patents on battery innovations.</p>
-      </div>
-      <div class="space-y-4">
-        <div class="bg-gray-50 rounded-lg p-4 shadow hover-zoom">
-          <div class="text-4xl font-extrabold text-blue-600">21</div>
-          <div class="text-gray-600">Peer‑reviewed papers</div>
-        </div>
-        <div class="bg-gray-50 rounded-lg p-4 shadow hover-zoom">
-          <div class="text-4xl font-extrabold text-blue-600">2</div>
-          <div class="text-gray-600">Patents filed</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section id="education" class="py-16 bg-gradient-to-b from-gray-50 to-gray-100">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-10">Education</h2>
-      <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <div class="bg-white rounded-xl shadow p-6 border-t-4 border-blue-600">
-          <h3 class="text-xl font-bold">Postdoc, Battery Materials</h3>
-          <p class="text-gray-700">Yangtze Delta Region Institute, UESTC, Huzhou</p>
-          <span class="text-sm font-semibold bg-blue-100 text-blue-800 px-2 py-1 rounded">2023–2025</span>
-        </div>
-        <div class="bg-white rounded-xl shadow p-6 border-t-4 border-green-600">
-          <h3 class="text-xl font-bold">Ph.D., Electronic Science & Technology</h3>
-          <p class="text-gray-700">UESTC, Chengdu</p>
-          <span class="text-sm font-semibold bg-green-100 text-green-800 px-2 py-1 rounded">2015–2019</span>
-        </div>
-        <div class="bg-white rounded-xl shadow p-6 border-t-4 border-yellow-600">
-          <h3 class="text-xl font-bold">M.E., Communication Systems & Networks</h3>
-          <p class="text-gray-700">Mehran University of Engineering & Technology, Jamshoro</p>
-          <span class="text-sm font-semibold bg-yellow-100 text-yellow-800 px-2 py-1 rounded">2010–2013</span>
-        </div>
-        <div class="bg-white rounded-xl shadow p-6 border-t-4 border-indigo-600">
-          <h3 class="text-xl font-bold">B.E., Electronic Engineering</h3>
-          <p class="text-gray-700">QUEST, Nawabshah</p>
-          <span class="text-sm font-semibold bg-indigo-100 text-indigo-800 px-2 py-1 rounded">2006–2009</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience" class="py-16 bg-white">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-10">Professional Experience</h2>
-      <div class="space-y-6">
-        <div class="bg-white rounded-xl shadow p-6 border border-gray-200">
-          <h3 class="text-xl font-bold">Postdoctoral Research Fellow</h3>
-          <p class="font-medium">Yangtze Delta Region Institute, UESTC</p>
-          <ul class="list-disc pl-5 mt-2 text-gray-700 space-y-1">
-            <li>Designed Prussian blue cathodes with alkali-ion pillars (K, Rb, Cs)</li>
-            <li>Optimized electrolytes to reduce interfacial corrosion</li>
-            <li>Investigated crystal water roles in stability</li>
-          </ul>
-        </div>
-        <div class="bg-white rounded-xl shadow p-6 border border-gray-200">
-          <h3 class="text-xl font-bold">Assistant Professor (Electrical Engineering)</h3>
-          <p class="font-medium">Balochistan University of Engineering & Technology, Khuzdar</p>
-          <ul class="list-disc pl-5 mt-2 text-gray-700 space-y-1">
-            <li>Head of Department • Led OBE implementation per PEC standards</li>
-            <li>Member of BoS, OBE Committee, Industrial Advisory Board, Admission Cell</li>
-            <li>Taught UG/PG courses and supervised projects</li>
-          </ul>
-        </div>
-        <div class="bg-white rounded-xl shadow p-6 border border-gray-200">
-          <h3 class="text-xl font-bold">Lecturer</h3>
-          <p class="font-medium">Shaheed Benazir Bhutto University, Nawabshah</p>
-          <ul class="list-disc pl-5 mt-2 text-gray-700 space-y-1">
-            <li>Head of Department and Campus Coordinator</li>
-            <li>Taught undergraduate courses and managed administration</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS / GRANTS -->
-  <section id="projects" class="py-16 bg-gradient-to-b from-gray-50 to-gray-100">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-10">Research Projects & Grants</h2>
-      <ul class="list-disc pl-5 text-gray-700 space-y-2">
-        <li>NaMnHCF cathode optimization with CNTs and alkali-ion doping</li>
-        <li>Li-S battery cathodes & separators to suppress polysulfide shuttling</li>
-        <li>High-temperature PVDF-HFP composite separators with metal oxides</li>
-        <li>N-doped carbon anodes delivering 551 mAh/g (Li) and 278 mAh/g (Na)</li>
-      </ul>
-      <h3 class="text-2xl font-bold mt-12 mb-6">Funded Projects</h3>
-      <ul class="list-disc pl-5 text-gray-700 space-y-1">
-        <li>Fundamental Research Funds (ZYGX2015Z003)</li>
-        <li>Sichuan Sci & Tech (2014RZ0041; 2016GZ0151)</li>
-        <li>NSFC (21403031, 51501030)</li>
-        <li>NRF Korea (2018R1A2B3001830)</li>
-      </ul>
-      <h3 class="text-2xl font-bold mt-12 mb-6">Patents</h3>
-      <p>Dehydrated Prussian Blue Analogue with Hydrophobic Layer (China, 2024, No. 202410601573.3)</p>
-      <p>Prussian Blue‑Based Cathode Material & Preparation (China, 2025, No. 202411561051.1)</p>
-    </div>
-  </section>
-
-  <!-- PUBLICATIONS (featured) -->
-  <section id="publications" class="py-16 bg-white">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-10">Selected Publications</h2>
-      <ul class="list-disc pl-5 text-gray-700 space-y-2">
-        <li>The Role of Crystal Water in Na-Mn Hexacyanoferrate Cathodes – Electrochimica Acta, 2025</li>
-        <li>Parameter-Driven Modulation in Prussian Blue Analogues – Chemistry – A European Journal, 2025</li>
-        <li>Pillar Effect of Large Ions on NaMnHCF – Small, 2023</li>
-        <li>In Situ Growth of NaMnHCF on CNTs – Molecules, 2024</li>
-        <li>PVDF-HFP/Colloidal Alumina Separator – Advanced Materials Interfaces, 2018</li>
-        <li>Carbon–WS₂ Composite Separator – ACS Applied Materials & Interfaces, 2018</li>
-        <li>N‑enriched Mesoporous Carbon Anodes – Physica Status Solidi A, 2022</li>
-      </ul>
-      <div class="text-center mt-8">
-        <a href="https://scholar.google.com/citations?user=Grn2XcQAAAAJ&hl=en" target="_blank" class="inline-flex items-center px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"><i class="fas fa-graduation-cap mr-2"></i>Browse full publication list</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ALL PUBLICATIONS (searchable/filterable table) -->
-  <section id="all-publications" class="py-16 bg-gradient-to-b from-gray-50 to-gray-100">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="flex items-end justify-between flex-wrap gap-4 mb-6">
-        <div>
-          <h2 class="text-3xl font-bold">All Publications</h2>
-          <p class="text-gray-600">Search, filter, and sort the complete list.</p>
-        </div>
-        <div class="flex items-center gap-2">
-          <button id="downloadCsv" class="btn bg-white border hover:shadow"><i class="fas fa-file-csv mr-2"></i>Download CSV</button>
-          <a href="https://scholar.google.com/citations?user=Grn2XcQAAAAJ&hl=en" target="_blank" class="btn bg-blue-600 text-white hover:bg-blue-700"><i class="fas fa-external-link-alt mr-2"></i>Google Scholar</a>
-        </div>
-      </div>
-
-      <!-- Controls -->
-      <div class="bg-white rounded-xl shadow p-4 md:p-5 mb-4">
-        <div class="grid md:grid-cols-4 gap-3">
-          <div class="col-span-2">
-            <label class="block text-sm font-semibold text-gray-600 mb-1">Search</label>
-            <input id="searchInput" type="text" placeholder="Title, venue..." class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"></div>
+        
+        <div class="space-y-12">
+          <!-- Timeline Item 1 -->
+          <div class="relative flex items-center">
+            <div class="flex-1 pr-8 text-right">
+              <div class="bg-white rounded-xl p-6 shadow-lg hover-lift">
+                <div class="text-sm text-blue-600 font-semibold">2023-2025</div>
+                <h3 class="text-xl font-bold mt-2">Postdoctoral Research</h3>
+                <p class="text-gray-600 mt-2">Advanced Prussian blue cathodes with alkali-ion pillars achieving unprecedented stability and capacity retention.</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs">Cathode Materials</span>
+                  <span class="bg-green-50 text-green-700 px-3 py-1 rounded-full text-xs">Crystal Water</span>
+                </div>
+              </div>
+            </div>
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-blue-500 rounded-full border-4 border-white shadow-lg"></div>
+            <div class="flex-1 pl-8"></div>
           </div>
-          <div>
-            <label class="block text-sm font-semibold text-gray-600 mb-1">Year</label>
-            <select id="yearFilter" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></select>
+          
+          <!-- Timeline Item 2 -->
+          <div class="relative flex items-center">
+            <div class="flex-1 pr-8"></div>
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div>
+            <div class="flex-1 pl-8">
+              <div class="bg-white rounded-xl p-6 shadow-lg hover-lift">
+                <div class="text-sm text-purple-600 font-semibold">2018-2019</div>
+                <h3 class="text-xl font-bold mt-2">Separator Breakthrough</h3>
+                <p class="text-gray-600 mt-2">Developed PVDF-HFP composite separators with 372% electrolyte uptake and exceptional thermal stability.</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="bg-purple-50 text-purple-700 px-3 py-1 rounded-full text-xs">Separators</span>
+                  <span class="bg-orange-50 text-orange-700 px-3 py-1 rounded-full text-xs">Thermal Stability</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div>
-            <label class="block text-sm font-semibold text-gray-600 mb-1">Component</label>
-            <select id="componentFilter" class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <option value="">All</option>
-              <option value="Cathode">Cathode</option>
-              <option value="Separator">Separator</option>
-              <option value="Anode">Anode</option>
-              <option value="Review">Review</option>
-            </select>
+          
+          <!-- Timeline Item 3 -->
+          <div class="relative flex items-center">
+            <div class="flex-1 pr-8 text-right">
+              <div class="bg-white rounded-xl p-6 shadow-lg hover-lift">
+                <div class="text-sm text-green-600 font-semibold">2015-2019</div>
+                <h3 class="text-xl font-bold mt-2">PhD Research</h3>
+                <p class="text-gray-600 mt-2">Groundbreaking work on nitrogen-doped carbon anodes delivering 3× the capacity of traditional graphite materials.</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="bg-green-50 text-green-700 px-3 py-1 rounded-full text-xs">Anode Materials</span>
+                  <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs">N-doped Carbon</span>
+                </div>
+              </div>
+            </div>
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-green-500 rounded-full border-4 border-white shadow-lg"></div>
+            <div class="flex-1 pl-8"></div>
           </div>
         </div>
       </div>
-
-      <!-- Table -->
-      <div class="bg-white rounded-xl shadow overflow-x-auto">
-        <table class="min-w-full">
-          <thead class="bg-gray-50">
-            <tr>
-              <th class="px-4 py-3 table-head">Year</th>
-              <th class="px-4 py-3 table-head">Title</th>
-              <th class="px-4 py-3 table-head">Venue</th>
-              <th class="px-4 py-3 table-head">Component</th>
-              <th class="px-4 py-3 table-head">Type</th>
-              <th class="px-4 py-3 table-head">Link</th>
-            </tr>
-          </thead>
-          <tbody id="pubsBody" class="divide-y"></tbody>
-        </table>
-      </div>
     </div>
   </section>
 
-  <!-- SKILLS -->
-  <section id="skills" class="py-16 bg-white">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-10">Skills</h2>
+  <!-- RESEARCH GALLERY -->
+<section id="gallery" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold gradient-text mb-4">Research Gallery</h2>
+      <p class="text-xl text-gray-600">Visual insights into battery materials and laboratory work</p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Gallery Item 1 -->
+      <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift">
+        <img src="images/1.jpg" alt="SEM Images - Cathode Morphology" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+          <button class="bg-white text-gray-900 px-6 py-2 rounded-full font-semibold">View Gallery</button>
+        </div>
+      </div>
+      
+      <!-- Gallery Item 2 -->
+      <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift">
+        <img src="images/2-1.png" alt="Battery Testing - Performance Data" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+          <button class="bg-white text-gray-900 px-6 py-2 rounded-full font-semibold">View Results</button>
+        </div>
+      </div>
+      
+      <!-- Gallery Item 3 -->
+      <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift">
+        <img src="images/3.jpg" alt="Lab Equipment - Research Setup" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+          <button class="bg-white text-gray-900 px-6 py-2 rounded-full font-semibold">Explore Lab</button>
+        </div>
+      </div>
+      
+      <!-- Gallery Item 4 -->
+      <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift">
+        <img src="images/4.png" alt="Performance Charts - Cycle Life Data" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+          <button class="bg-white text-gray-900 px-6 py-2 rounded-full font-semibold">View Charts</button>
+        </div>
+      </div>
+      
+      <!-- Gallery Item 5 -->
+      <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift">
+        <img src="images/5.png" alt="Material Structure - XRD Analysis" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+          <button class="bg-white text-gray-900 px-6 py-2 rounded-full font-semibold">View Analysis</button>
+        </div>
+      </div>
+      
+      <!-- Gallery Item 6 -->
+      <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift">
+        <img src="images/6.png" alt="Collaboration - Research Team" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+          <button class="bg-white text-gray-900 px-6 py-2 rounded-full font-semibold">Meet Team</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+	  <section id="skills" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+		<div class="text-center mb-16">
+		<h2 class="text-4xl font-bold gradient-text mb-4">Skills Related to Battery Technology</h2>
       <div class="grid md:grid-cols-3 gap-6">
         <div class="bg-gray-50 rounded-xl p-6 border-t-4 border-blue-600">
-          <h3 class="text-lg font-bold mb-3">Battery Technology</h3>
+          <h3 class="text-lg font-bold mb-3">Fabrication and Testing</h3>
           <ul class="text-gray-700 text-sm space-y-1 list-disc pl-5">
             <li>Li‑ion, Li‑S, Na‑ion systems</li>
             <li>Separator design & cathode optimization</li>
@@ -292,95 +441,682 @@
       </div>
     </div>
   </section>
+<!-- PUBLICATIONS WITH CHARTS -->
+<section id="publications" class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold gradient-text mb-4">Publications & Impact</h2>
+      <p class="text-xl text-gray-600">Research contributions and citation metrics</p>
+    </div>
 
-  <!-- CONTACT -->
-  <section id="contact" class="py-16 bg-gradient-to-b from-gray-50 to-gray-100">
-    <div class="max-w-3xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-4 gradient-text">Get in Touch</h2>
-      <p class="text-gray-700 mb-6">Open to research collaborations and academic opportunities in electrochemical energy storage.</p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="mailto:engr.shamshad@hotmail.com" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition"><i class="fas fa-envelope mr-2"></i>Email</a>
-        <a href="tel:+8615557279074" class="bg-gray-800 text-white px-6 py-3 rounded hover:bg-gray-900 transition"><i class="fas fa-phone mr-2"></i>+86 155 5727 9074</a>
-        <a href="https://scholar.google.com/citations?user=Grn2XcQAAAAJ&hl=en" target="_blank" class="bg-white border px-6 py-3 rounded hover:shadow transition"><i class="fas fa-graduation-cap mr-2 text-blue-700"></i>Google Scholar</a>
-        <a href="https://www.linkedin.com/in/shamshad-ali-8b177019b/" target="_blank" class="bg-white border px-6 py-3 rounded hover:shadow transition"><i class="fab fa-linkedin mr-2 text-blue-700"></i>LinkedIn</a>
+    <div class="grid lg:grid-cols-2 gap-12 mb-16">
+      <!-- Citation Chart -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift">
+        <h3 class="text-xl font-bold mb-6 flex items-center">
+          <i class="fas fa-chart-line mr-3 text-blue-600"></i>
+          Citation Trends
+        </h3>
+        <div class="relative w-full" style="min-height: 300px;">
+          <canvas id="citationChart" aria-label="Line chart showing citation trends from 2018 to 2025" title="Citation Trends"></canvas>
+        </div>
       </div>
-      <p class="text-xs text-gray-500 mt-6">Professional Registration: ELECTRO/13471</p>
+
+      <!-- Publication Distribution -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift">
+        <h3 class="text-xl font-bold mb-6 flex items-center">
+          <i class="fas fa-chart-pie mr-3 text-green-600"></i>
+          Research Focus Areas
+        </h3>
+        <div class="relative w-full" style="min-height: 300px;">
+          <canvas id="focusChart" aria-label="Doughnut chart showing distribution of research focus areas" title="Research Focus Areas"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured Publications -->
+    <div class="space-y-6">
+      <h3 class="text-2xl font-bold text-center mb-8">Featured Publications</h3>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-xl p-6 shadow-lg hover-lift border-l-4 border-blue-500">
+          <div class="flex items-start justify-between mb-3">
+            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold">2019 • Journal</span>
+            <div class="flex items-center space-x-2 text-sm text-gray-500">
+              <i class="fas fa-quote-right ml-2"></i>
+              <span>224 citations</span>
+            </div>
+          </div>
+          <h4 class="font-bold text-lg mb-2">Recent development in separators for high‐temperature lithium‐ion batteries</h4>
+          <p class="text-gray-600 text-sm mb-3">Small</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Separator</span>
+            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Lithium-ion</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/smll.201901689" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium text-sm">Read More →</a>
+            <div class="text-xs text-gray-400">Impact Factor: 12.1</div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-lg hover-lift border-l-4 border-green-500">
+          <div class="flex items-start justify-between mb-3">
+            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-semibold">2023 • Journal</span>
+            <div class="flex items-center space-x-2 text-sm text-gray-500">
+              <i class="fas fa-quote-right ml-2"></i>
+              <span>18 citations</span>
+            </div>
+          </div>
+          <h4 class="font-bold text-lg mb-2">The Pillar Effect of Large‐Size Alkaline Ions on the Electrochemical Stability of Sodium Manganese Hexacyanoferrate for Sodium‐Ion Batteries</h4>
+          <p class="text-gray-600 text-sm mb-3">Small</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Sodium-ion</span>
+            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Prussian blue cathodes</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/smll.202304887" target="_blank" class="text-green-600 hover:text-green-800 font-medium text-sm">Read More →</a>
+            <div class="text-xs text-gray-400">Impact Factor: 12.1</div>
+          </div>
+        </div>
+      
+		  <div class="bg-white rounded-xl p-6 shadow-lg hover-lift border-l-4 border-yellow-500">
+          <div class="flex items-start justify-between mb-3">
+            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-semibold">2018 • Journal</span>
+            <div class="flex items-center space-x-2 text-sm text-gray-500">
+              <i class="fas fa-quote-right ml-2"></i>
+              <span>132 citations</span>
+            </div>
+          </div>
+          <h4 class="font-bold text-lg mb-2">Highly Efficient PVDF-HFP/Colloidal Alumina Composite Separator for High-Temperature Lithium-Ion Batteries</h4>
+          <p class="text-gray-600 text-sm mb-3">Advanced Materials Interfaces</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Lithium-ion</span>
+            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Separator</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <a href="https://advanced.onlinelibrary.wiley.com/doi/abs/10.1002/admi.201701147" target="_blank" class="text-green-600 hover:text-green-800 font-medium text-sm">Read More →</a>
+            <div class="text-xs text-gray-400">Impact Factor: 4.4</div>
+          </div>
+        </div>
+       
+ 		 <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-xl p-6 shadow-lg hover-lift border-l-4 border-red-500">
+          <div class="flex items-start justify-between mb-3">
+            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold">2018 • Journal</span>
+            <div class="flex items-center space-x-2 text-sm text-gray-500">
+              <i class="fas fa-quote-right ml-2"></i>
+              <span>55 citations</span>
+            </div>
+          </div>
+          <h4 class="font-bold text-lg mb-2">Carbon–Tungsten Disulfide Composite Bilayer Separator for High-Performance Lithium–Sulfur Batteries</h4>
+          <p class="text-gray-600 text-sm mb-3">Acs Applied Materials and Interfaces</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Lithium-Sulfur</span>
+            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Polysulfide</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <a href="https://pubs.acs.org/doi/abs/10.1021/acsami.8b12682" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium text-sm">Read More →</a>
+            <div class="text-xs text-gray-400">Impact Factor: 8.2</div>
+          </div>
+        </div>
+		</div>
+	  
+      <div class="text-center mt-8">
+        <a href="https://scholar.google.com/citations?user=Grn2XcQAAAAJ&hl=en" target="_blank" class="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold hover:shadow-lg transition-all hover:scale-105">
+          <i class="fas fa-graduation-cap mr-2"></i>
+          View All Publications
+          <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- AWARDS & HONORS -->
+  <section id="awards" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold gradient-text mb-4">Awards & Recognition</h2>
+        <p class="text-xl text-gray-600">Achievements and honors in research excellence</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-6 text-white hover-lift">
+          <div class="text-center">
+            <i class="fas fa-trophy text-4xl mb-4"></i>
+            <h3 class="text-xl font-bold mb-2">Excellence in Research</h3>
+            <p class="text-yellow-100 mb-3">Outstanding contribution to battery materials research</p>
+            <div class="text-sm text-yellow-200">UESTC • 2023</div>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl p-6 text-white hover-lift">
+          <div class="text-center">
+            <i class="fas fa-medal text-4xl mb-4"></i>
+            <h3 class="text-xl font-bold mb-2">Best Paper Award</h3>
+            <p class="text-blue-100 mb-3">Prussian blue cathode stability research</p>
+            <div class="text-sm text-blue-200">International Conference • 2022</div>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-green-500 to-teal-600 rounded-2xl p-6 text-white hover-lift">
+          <div class="text-center">
+            <i class="fas fa-star text-4xl mb-4"></i>
+            <h3 class="text-xl font-bold mb-2">Research Fellowship</h3>
+            <p class="text-green-100 mb-3">Postdoctoral research excellence grant</p>
+            <div class="text-sm text-green-200">Yangtze Delta Institute • 2023</div>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl p-6 text-white hover-lift">
+          <div class="text-center">
+            <i class="fas fa-certificate text-4xl mb-4"></i>
+            <h3 class="text-xl font-bold mb-2">Professional Registration</h3>
+            <p class="text-purple-100 mb-3">Certified electrical engineering professional</p>
+            <div class="text-sm text-purple-200">PEC • ELECTRO/13471</div>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-red-500 to-rose-600 rounded-2xl p-6 text-white hover-lift">
+          <div class="text-center">
+            <i class="fas fa-graduation-cap text-4xl mb-4"></i>
+            <h3 class="text-xl font-bold mb-2">PhD Excellence</h3>
+            <p class="text-red-100 mb-3">Outstanding doctoral thesis in electronic science</p>
+            <div class="text-sm text-red-200">UESTC • 2019</div>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl p-6 text-white hover-lift">
+          <div class="text-center">
+            <i class="fas fa-handshake text-4xl mb-4"></i>
+            <h3 class="text-xl font-bold mb-2">Collaboration Award</h3>
+            <p class="text-cyan-100 mb-3">International research partnership excellence</p>
+            <div class="text-sm text-cyan-200">Multiple Institutions • 2021</div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <footer class="py-8 text-center text-sm text-gray-500">© <span id="yr"></span> Dr. Shamshad Ali • UESTC • Built with TailwindCSS</footer>
+  <!-- EXPERIENCE -->
+  <section id="experience" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold gradient-text mb-4">Professional Experience</h2>
+        <p class="text-xl text-gray-600">Academic and research positions</p>
+      </div>
+      
+      <div class="space-y-8">
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift border-l-4 border-blue-500">
+          <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900">Postdoctoral Research Fellow</h3>
+              <p class="text-lg text-blue-600 font-semibold">Yangtze Delta Region Institute, UESTC</p>
+              <p class="text-gray-500">Huzhou, China • 2023-2025</p>
+            </div>
+            <div class="mt-4 lg:mt-0">
+              <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold">Current Position</span>
+            </div>
+          </div>
+          <ul class="space-y-3 text-gray-700">
+            <li class="flex items-start">
+              <i class="fas fa-microscope mr-3 mt-1 text-blue-500"></i>
+              <span>Designed advanced Prussian blue cathodes with alkali-ion pillars (K, Rb, Cs) achieving >76% capacity retention over 1000 cycles</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-flask mr-3 mt-1 text-blue-500"></i>
+              <span>Optimized electrolyte formulations to reduce interfacial corrosion and improve battery longevity</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-chart-line mr-3 mt-1 text-blue-500"></i>
+              <span>Investigated crystal water roles in cathode stability through comprehensive electrochemical analysis</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift border-l-4 border-green-500">
+          <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900">Assistant Professor</h3>
+              <p class="text-lg text-green-600 font-semibold">Balochistan University of Engineering & Technology</p>
+              <p class="text-gray-500">Khuzdar, Pakistan • 2019-2023</p>
+            </div>
+            <div class="mt-4 lg:mt-0">
+              <span class="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold">Department Head</span>
+            </div>
+          </div>
+          <ul class="space-y-3 text-gray-700">
+            <li class="flex items-start">
+              <i class="fas fa-users mr-3 mt-1 text-green-500"></i>
+              <span>Led Electrical Engineering Department and implemented OBE curriculum per PEC standards</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-chalkboard-teacher mr-3 mt-1 text-green-500"></i>
+              <span>Taught undergraduate and postgraduate courses in electronics and supervised research projects</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-cogs mr-3 mt-1 text-green-500"></i>
+              <span>Member of Board of Studies, OBE Committee, Industrial Advisory Board, and Admission Cell</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift border-l-4 border-purple-500">
+          <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900">Lecturer</h3>
+              <p class="text-lg text-purple-600 font-semibold">Shaheed Benazir Bhutto University</p>
+              <p class="text-gray-500">Nawabshah, Pakistan • 2013-2015</p>
+            </div>
+            <div class="mt-4 lg:mt-0">
+              <span class="bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-semibold">Campus Coordinator</span>
+            </div>
+          </div>
+          <ul class="space-y-3 text-gray-700">
+            <li class="flex items-start">
+              <i class="fas fa-university mr-3 mt-1 text-purple-500"></i>
+              <span>Head of Department for Electronic Engineering and Campus Coordinator</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-book mr-3 mt-1 text-purple-500"></i>
+              <span>Taught undergraduate courses and managed academic administration</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-20 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="relative max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-4">Let's Collaborate</h2>
+        <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+          Open to research collaborations, academic opportunities, and industry partnerships in electrochemical energy storage
+        </p>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-8">
+          <div class="glass rounded-2xl p-6">
+            <h3 class="text-xl font-bold mb-6">Contact Information</h3>
+            <div class="space-y-4">
+              <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
+                  <i class="fas fa-envelope text-blue-400"></i>
+                </div>
+                <div>
+                  <p class="font-semibold">Email</p>
+                  <a href="mailto:engr.shamshad@hotmail.com" class="text-blue-300 hover:text-white transition">engr.shamshad@hotmail.com</a>
+                </div>
+              </div>
+              
+              <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
+                  <i class="fas fa-phone text-green-400"></i>
+                </div>
+                <div>
+                  <p class="font-semibold">Phone</p>
+                  <a href="tel:+8615557279074" class="text-blue-300 hover:text-white transition">+86 155 5727 9074</a>
+                </div>
+              </div>
+              
+              <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
+                  <i class="fas fa-map-marker-alt text-red-400"></i>
+                </div>
+                <div>
+                  <p class="font-semibold">Location</p>
+                  <p class="text-blue-200">Huzhou, China</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="glass rounded-2xl p-6">
+            <h3 class="text-xl font-bold mb-4">Research Interests</h3>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="bg-white/5 rounded-lg p-3 text-center">
+                <i class="fas fa-battery-full text-2xl mb-2 text-yellow-400"></i>
+                <p class="text-sm">Battery Materials</p>
+              </div>
+              <div class="bg-white/5 rounded-lg p-3 text-center">
+                <i class="fas fa-atom text-2xl mb-2 text-blue-400"></i>
+                <p class="text-sm">Electrochemistry</p>
+              </div>
+              <div class="bg-white/5 rounded-lg p-3 text-center">
+                <i class="fas fa-leaf text-2xl mb-2 text-green-400"></i>
+                <p class="text-sm">Energy Storage</p>
+              </div>
+              <div class="bg-white/5 rounded-lg p-3 text-center">
+                <i class="fas fa-microscope text-2xl mb-2 text-purple-400"></i>
+                <p class="text-sm">Nanomaterials</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="space-y-6">
+          <div class="glass rounded-2xl p-8">
+            <h3 class="text-xl font-bold mb-6">Quick Connect</h3>
+            <div class="grid grid-cols-2 gap-4">
+              <a href="https://scholar.google.com/citations?user=Grn2XcQAAAAJ&hl=en" target="_blank" class="bg-white/10 hover:bg-white/20 rounded-xl p-4 text-center transition-all hover:scale-105">
+                <i class="fas fa-graduation-cap text-2xl mb-2 text-blue-400"></i>
+                <p class="font-semibold">Google Scholar</p>
+                <p class="text-xs text-blue-200">View Publications</p>
+              </a>
+              
+              <a href="https://www.linkedin.com/in/shamshad-ali-8b177019b/" target="_blank" class="bg-white/10 hover:bg-white/20 rounded-xl p-4 text-center transition-all hover:scale-105">
+                <i class="fab fa-linkedin text-2xl mb-2 text-blue-400"></i>
+                <p class="font-semibold">LinkedIn</p>
+                <p class="text-xs text-blue-200">Professional Network</p>
+              </a>
+              
+              <a href="mailto:engr.shamshad@hotmail.com" class="bg-white/10 hover:bg-white/20 rounded-xl p-4 text-center transition-all hover:scale-105">
+                <i class="fas fa-envelope text-2xl mb-2 text-green-400"></i>
+                <p class="font-semibold">Email</p>
+                <p class="text-xs text-green-200">Direct Contact</p>
+              </a>
+              
+              <a href="docs/Shamshad-Ali-CV.pdf" target="_blank" 
+   class="bg-white/10 hover:bg-white/20 rounded-xl p-4 text-center transition-all hover:scale-105 block">
+  <i class="fas fa-file-pdf text-2xl mb-2 text-red-400"></i>
+  <p class="font-semibold">Download CV</p>
+  <p class="text-xs text-red-200">Latest Version</p>
+</a>
+            </div>
+          </div>
+          
+          <div class="text-center">
+            <p class="text-sm text-blue-300">
+              Professional Registration: <span class="font-semibold">ELECTRO/13471</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-gray-400 py-12">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+              <span class="text-white font-bold text-sm">SA</span>
+            </div>
+            <span class="text-white font-bold">Dr. Shamshad Ali</span>
+          </div>
+          <p class="text-sm">
+            Advancing sustainable energy solutions through innovative battery materials research and electrochemical engineering.
+          </p>
+        </div>
+        
+        <div>
+          <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+          <div class="space-y-2 text-sm">
+            <a href="#about" class="block hover:text-white transition">About</a>
+            <a href="#research" class="block hover:text-white transition">Research</a>
+            <a href="#publications" class="block hover:text-white transition">Publications</a>
+            <a href="#contact" class="block hover:text-white transition">Contact</a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="text-white font-semibold mb-4">Connect</h4>
+          <div class="flex space-x-4">
+            <a href="https://scholar.google.com/citations?user=Grn2XcQAAAAJ&hl=en" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+              <i class="fas fa-graduation-cap"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/shamshad-ali-8b177019b/" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:engr.shamshad@hotmail.com" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+              <i class="fas fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
+        <p>&copy; <span id="currentYear"></span> Dr. Shamshad Ali. Built with modern web technologies.</p>
+      </div>
+    </div>
+  </footer>
 
   <script>
-    // Mobile nav
-    document.getElementById('menu-toggle').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
-    document.getElementById('yr').textContent = new Date().getFullYear();
-
-    // Publications data (editable): add/remove rows as needed
-    const publicationsData = [
-      { year: 2025, title: 'The Role of Crystal Water in Na–Mn Hexacyanoferrate Cathodes', venue: 'Electrochimica Acta', component: 'Cathode', type: 'Journal', link: '' },
-      { year: 2025, title: 'Parameter‑Driven Modulation in Prussian Blue Analogues', venue: 'Chemistry – A European Journal', component: 'Cathode', type: 'Journal', link: '' },
-      { year: 2024, title: 'In Situ Growth of NaMnHCF on Carbon Nanotubes', venue: 'Molecules', component: 'Cathode', type: 'Journal', link: '' },
-      { year: 2023, title: 'Pillar Effect of Large Ions on NaMnHCF', venue: 'Small', component: 'Cathode', type: 'Journal', link: '' },
-      { year: 2018, title: 'PVDF‑HFP/Colloidal Alumina Composite Separator', venue: 'Advanced Materials Interfaces', component: 'Separator', type: 'Journal', link: '' },
-      { year: 2018, title: 'Carbon–WS₂ Composite Separator for Li‑ion Batteries', venue: 'ACS Applied Materials & Interfaces', component: 'Separator', type: 'Journal', link: '' },
-      { year: 2022, title: 'N‑enriched Mesoporous Carbon as High‑Capacity Anode', venue: 'Physica Status Solidi A', component: 'Anode', type: 'Journal', link: '' },
-      { year: 2016, title: 'Flexible Separator with Enhanced Thermal Stability', venue: 'Energy Storage Materials', component: 'Separator', type: 'Journal', link: '' },
-      { year: 2017, title: 'Li–S Cathode Architecture to Suppress Polysulfide Shuttle', venue: 'Journal of Power Sources', component: 'Cathode', type: 'Journal', link: '' },
-      { year: 2019, title: 'Layered Oxide Cathodes: Stability and Capacity', venue: 'Electrochimica Acta', component: 'Cathode', type: 'Journal', link: '' },
-    ];
-
-    // Populate filters
-    const yearSelect = document.getElementById('yearFilter');
-    const years = Array.from(new Set(publicationsData.map(p => p.year))).sort((a,b)=>b-a);
-    yearSelect.innerHTML = '<option value="">All</option>' + years.map(y => `<option value="${y}">${y}</option>`).join('');
-
-    const tbody = document.getElementById('pubsBody');
-    const searchInput = document.getElementById('searchInput');
-    const compFilter = document.getElementById('componentFilter');
-
-    function renderRows(items){
-      tbody.innerHTML = items.map(p => `
-        <tr class="hover:bg-gray-50">
-          <td class="px-4 py-3 text-sm text-gray-700">${p.year}</td>
-          <td class="px-4 py-3 text-sm font-medium text-gray-900">${p.title}</td>
-          <td class="px-4 py-3 text-sm text-gray-700">${p.venue}</td>
-          <td class="px-4 py-3 text-sm text-gray-700">${p.component||''}</td>
-          <td class="px-4 py-3 text-sm text-gray-700">${p.type||'Journal'}</td>
-          <td class="px-4 py-3 text-sm">${p.link ? `<a class='text-blue-600 hover:underline' href='${p.link}' target='_blank'>Open</a>` : '<span class="text-gray-400">—</span>'}</td>
-        </tr>`).join('');
-    }
-
-    function applyFilters(){
-      const q = (searchInput.value||'').toLowerCase();
-      const y = yearSelect.value;
-      const c = compFilter.value;
-      const filtered = publicationsData.filter(p => {
-        const matchesQ = !q || (p.title + ' ' + p.venue).toLowerCase().includes(q);
-        const matchesY = !y || String(p.year) === y;
-        const matchesC = !c || (p.component === c);
-        return matchesQ && matchesY && matchesC;
-      });
-      renderRows(filtered);
-    }
-
-    searchInput.addEventListener('input', applyFilters);
-    yearSelect.addEventListener('change', applyFilters);
-    compFilter.addEventListener('change', applyFilters);
-
-    // CSV download
-    document.getElementById('downloadCsv').addEventListener('click', () => {
-      const header = ['Year','Title','Venue','Component','Type','Link'];
-      const rows = publicationsData.map(p => [p.year, p.title, p.venue, p.component||'', p.type||'Journal', p.link||'']);
-      const csv = [header, ...rows].map(r => r.map(x => '"'+String(x).replace(/"/g,'""')+'"').join(',')).join('\n');
-      const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = 'publications.csv'; a.click();
-      URL.revokeObjectURL(url);
+    // Mobile Menu Toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenu.classList.toggle('hidden');
     });
 
-    // initial render
-    renderRows(publicationsData);
+    // Current Year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+          // Close mobile menu if open
+          document.getElementById('mobile-menu').classList.add('hidden');
+        }
+      });
+    });
+
+   // Citation Chart
+const citationCtx = document.getElementById('citationChart').getContext('2d');
+new Chart(citationCtx, {
+  type: 'line',
+  data: {
+    labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+    datasets: [{
+      label: 'Citations per Year',
+      data: [10, 59, 108, 140, 144, 148, 181, 200],
+      borderColor: 'var(--primary)', // Use CSS variable for theme consistency
+      backgroundColor: 'rgba(59, 130, 246, 0.1)',
+      borderWidth: 3,
+      fill: true,
+      tension: 0.4
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: false
+      },
+      tooltip: {
+        backgroundColor: 'var(--primary-dark)',
+        titleFont: { size: 14 },
+        bodyFont: { size: 12 }
+      }
+    },
+    animation: {
+      duration: 1000,
+      easing: 'easeOutQuart'
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        grid: {
+          color: 'rgba(0, 0, 0, 0.1)'
+        },
+        title: {
+          display: true,
+          text: 'Citations',
+          color: 'var(--primary-dark)',
+          font: { size: 14 }
+        }
+      },
+      x: {
+        grid: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'Year',
+          color: 'var(--primary-dark)',
+          font: { size: 14 }
+        }
+      }
+    }
+  }
+});
+
+// Research Focus Chart
+const focusCtx = document.getElementById('focusChart').getContext('2d');
+new Chart(focusCtx, {
+  type: 'doughnut',
+  data: {
+    labels: ['Cathodes', 'Separators', 'Anodes', 'Reviews', 'Other'],
+    datasets: [{
+      data: [45, 25, 15, 10, 5],
+      backgroundColor: [
+        'var(--primary)',
+        'var(--accent)',
+        'rgb(245, 158, 11)',
+        'rgb(239, 68, 68)',
+        'rgb(139, 92, 246)'
+      ],
+      borderWidth: 0
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          padding: 20,
+          usePointStyle: true,
+          font: { size: 12 }
+        }
+      },
+      tooltip: {
+        backgroundColor: 'var(--primary-dark)',
+        titleFont: { size: 14 },
+        bodyFont: { size: 12 }
+      }
+    },
+    animation: {
+      duration: 1000,
+      easing: 'easeOutQuart'
+    }
+  }
+});
+    // Intersection Observer for Animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections
+    document.querySelectorAll('section').forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(30px)';
+      section.style.transition = 'all 0.6s ease-out';
+      observer.observe(section);
+    });
+
+    // Navbar Scroll Effect
+    let lastScrollTop = 0;
+    const navbar = document.querySelector('nav');
+    
+    window.addEventListener('scroll', function() {
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (scrollTop > lastScrollTop && scrollTop > 100) {
+        navbar.style.transform = 'translateY(-100%)';
+      } else {
+        navbar.style.transform = 'translateY(0)';
+      }
+      lastScrollTop = scrollTop;
+      
+      // Add background blur when scrolling
+      if (scrollTop > 50) {
+        navbar.classList.add('bg-white/95');
+        navbar.classList.remove('bg-white/85');
+      } else {
+        navbar.classList.add('bg-white/85');
+        navbar.classList.remove('bg-white/95');
+      }
+    });
+
+    navbar.style.transition = 'transform 0.3s ease-in-out, background-color 0.3s ease';
+	
+	
+	async function fetchCitationData() {
+  try {
+    const response = await fetch('https://api.example.com/citations');
+    const data = await response.json();
+    // Update citationChart.data.datasets[0].data with fetched data
+  } catch (error) {
+    console.error('Error fetching citation data:', error);
+  }
+}
+
+
+document.getElementById('cv-download').addEventListener('click', async (e) => {
+  e.preventDefault();
+  try {
+    const res = await fetch('docs/Shamshad-Ali-CV.pdf'); // must be same-origin
+    if (!res.ok) throw new Error('Fetch failed');
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Shamshad-Ali-CV.pdf';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  } catch (err) {
+    // graceful fallback: open in new tab
+    window.open('docs/Shamshad-Ali-CV.pdf', '_blank');
+  }
+});
   </script>
 </body>
+
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
