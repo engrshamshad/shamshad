@@ -348,7 +348,7 @@
     </div>
   </section>
 
-  <!-- RESEARCH GALLERY -->
+  <!-- RESEARCH GALLERY WITH FILTERING -->
 <section id="gallery" class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-6">
     <div class="text-center mb-16">
@@ -356,91 +356,343 @@
       <p class="text-xl text-gray-600">Visual insights into battery materials and laboratory work</p>
     </div>
     
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Gallery Item 1 -->
-      <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift">
-        <img src="images/1.jpg" alt="SEM Images - Cathode Morphology" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-          <button class="bg-white text-gray-900 px-6 py-2 rounded-full font-semibold">View Gallery</button>
+    <!-- Category Filters -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12">
+      <button class="filter-btn active px-6 py-2 rounded-full bg-blue-600 text-white font-medium transition-all" data-filter="all">
+        All Images
+      </button>
+      <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-blue-100 font-medium transition-all" data-filter="materials">
+        Materials
+      </button>
+      <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-blue-100 font-medium transition-all" data-filter="analysis">
+        Analysis
+      </button>
+      <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-blue-100 font-medium transition-all" data-filter="lab">
+        Lab Work
+      </button>
+      <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-blue-100 font-medium transition-all" data-filter="results">
+        Results
+      </button>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 gallery-container">
+      <!-- Materials Category Images -->
+      <div class="gallery-item group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift" data-category="materials">
+        <img src="images/Pb.jpg" alt="SEM Images - Cathode Morphology" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+          <h3 class="text-white font-bold text-lg mb-2">Cathode Morphology</h3>
+          <p class="text-blue-100 text-sm">SEM analysis of Prussian blue cathode materials</p>
         </div>
       </div>
       
-      <!-- Gallery Item 2 -->
-      <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift">
-        <img src="images/2-1.png" alt="Battery Testing - Performance Data" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-          <button class="bg-white text-gray-900 px-6 py-2 rounded-full font-semibold">View Results</button>
+      <div class="gallery-item group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift" data-category="materials">
+        <img src="images/anode.jpg" alt="Anode Structure" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+          <h3 class="text-white font-bold text-lg mb-2">Anode Structure</h3>
+          <p class="text-blue-100 text-sm">Nitrogen-doped carbon anode at high magnification</p>
         </div>
       </div>
       
-      <!-- Gallery Item 3 -->
-      <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift">
-        <img src="images/3.jpg" alt="Lab Equipment - Research Setup" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-          <button class="bg-white text-gray-900 px-6 py-2 rounded-full font-semibold">Explore Lab</button>
+      <div class="gallery-item group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift" data-category="materials">
+        <img src="images/pvdf.jpg" alt="Separator Cross-Section" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+          <h3 class="text-white font-bold text-lg mb-2">Separator SEM images</h3>
+          <p class="text-blue-100 text-sm">PVDF-HFP composite separator microstructure</p>
         </div>
       </div>
+	  <!-- For the 4th material item and beyond -->
+<div class="gallery-item hidden group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift" data-category="materials">
+  <!-- your image content -->
+</div>
+	  <div class="gallery-item group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift" data-category="category-name">
+  <img src="images/Cws.jpg" alt="Description of image" class="w-full h-full object-cover">
+  <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+    <h3 class="text-white font-bold text-lg mb-2">Cross section of Bilayer C-WS2 separator</h3>
+    <p class="text-blue-100 text-sm">Composite separator to reduce shuttle effect in L-S batteries</p>
+  </div>
+</div>
       
-      <!-- Gallery Item 4 -->
-      <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift">
-        <img src="images/4.png" alt="Performance Charts - Cycle Life Data" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-          <button class="bg-white text-gray-900 px-6 py-2 rounded-full font-semibold">View Charts</button>
-        </div>
-      </div>
-      
-      <!-- Gallery Item 5 -->
-      <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift">
+      <!-- Analysis Category Images -->
+      <div class="gallery-item group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift" data-category="analysis">
         <img src="images/5.png" alt="Material Structure - XRD Analysis" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-          <button class="bg-white text-gray-900 px-6 py-2 rounded-full font-semibold">View Analysis</button>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+          <h3 class="text-white font-bold text-lg mb-2">XRD Analysis</h3>
+          <p class="text-blue-100 text-sm">Crystal structure characterization of electrode materials</p>
         </div>
       </div>
       
-      <!-- Gallery Item 6 -->
-      <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift">
+      <div class="gallery-item group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift" data-category="analysis">
+        <img src="images/analysis-2.jpg" alt="Raman Spectroscopy" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+          <h3 class="text-white font-bold text-lg mb-2">Raman Spectroscopy</h3>
+          <p class="text-blue-100 text-sm">Chemical bonding analysis of carbon-based materials</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift" data-category="analysis">
+        <img src="images/analysis-3.jpg" alt="XPS Analysis" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+          <h3 class="text-white font-bold text-lg mb-2">XPS Analysis</h3>
+          <p class="text-blue-100 text-sm">Surface chemistry of cathode after 500 cycles</p>
+        </div>
+      </div>
+      
+      <!-- Lab Work Category Images -->
+      <div class="gallery-item group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift" data-category="lab">
+        <img src="images/3.jpg" alt="Lab Equipment - Research Setup" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+          <h3 class="text-white font-bold text-lg mb-2">Research Setup</h3>
+          <p class="text-blue-100 text-sm">Glove box setup for battery assembly</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift" data-category="lab">
+        <img src="images/lab-2.jpg" alt="Electrode Preparation" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+          <h3 class="text-white font-bold text-lg mb-2">Electrode Preparation</h3>
+          <p class="text-blue-100 text-sm">Doctor blade coating of electrode slurry</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift" data-category="lab">
+        <img src="images/lab-3.jpg" alt="Cell Assembly" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+          <h3 class="text-white font-bold text-lg mb-2">Cell Assembly</h3>
+          <p class="text-blue-100 text-sm">CR2032 coin cell assembly process</p>
+        </div>
+      </div>
+      
+      <!-- Results Category Images -->
+      <div class="gallery-item group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift" data-category="results">
+        <img src="images/2-1.png" alt="Battery Testing - Performance Data" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+          <h3 class="text-white font-bold text-lg mb-2">Performance Data</h3>
+          <p class="text-blue-100 text-sm">Cycle life testing of sodium-ion batteries</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift" data-category="results">
+        <img src="images/4.png" alt="Performance Charts - Cycle Life Data" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+          <h3 class="text-white font-bold text-lg mb-2">Cycle Life Data</h3>
+          <p class="text-blue-100 text-sm">Long-term cycling performance of novel cathodes</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift" data-category="results">
+        <img src="images/results-3.jpg" alt="Rate Capability" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+          <h3 class="text-white font-bold text-lg mb-2">Rate Capability</h3>
+          <p class="text-blue-100 text-sm">Performance at different current densities</p>
+        </div>
+      </div>
+      
+      <!-- Collaboration Category Images -->
+      <div class="gallery-item group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift" data-category="collab">
         <img src="images/6.png" alt="Collaboration - Research Team" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-          <button class="bg-white text-gray-900 px-6 py-2 rounded-full font-semibold">Meet Team</button>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+          <h3 class="text-white font-bold text-lg mb-2">Research Team</h3>
+          <p class="text-blue-100 text-sm">Collaboration with international researchers</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift" data-category="collab">
+        <img src="images/collab-2.jpg" alt="Conference Presentation" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+          <h3 class="text-white font-bold text-lg mb-2">Conference Presentation</h3>
+          <p class="text-blue-100 text-sm">Presenting research findings at international conference</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square hover-lift" data-category="collab">
+        <img src="images/collab-3.jpg" alt="Research Discussion" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+          <h3 class="text-white font-bold text-lg mb-2">Research Discussion</h3>
+          <p class="text-blue-100 text-sm">Collaborative data analysis session</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Load More Button (optional) -->
+    <div class="text-center mt-12">
+      <button id="load-more-btn" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold transition-all">
+  <i class="fas fa-images mr-2"></i>View More Images
+</button>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Additional styles for filtering */
+  .filter-btn.active {
+    background: linear-gradient(135deg, #3b82f6, #1e40af);
+  }
+  
+  .gallery-item {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .gallery-item.hidden {
+    display: none;
+  }
+</style>
+
+<script>
+  // Filter functionality for the gallery
+  document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.getAttribute('data-filter');
+        
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        // Filter items
+        galleryItems.forEach(item => {
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
+    });
+  });
+</script>
+<!-- ENHANCED SKILLS SECTION -->
+<section id="skills" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold gradient-text mb-4">Technical Expertise</h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Comprehensive skills in battery technology development, from materials synthesis to electrochemical characterization
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Fabrication and Testing -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift group border-l-4 border-blue-500">
+        <div class="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+          <i class="fas fa-cogs text-3xl text-blue-600"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-4 text-gray-800">Fabrication & Testing</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start">
+            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+            <span class="text-gray-700">Li-ion, Li-S, Na-ion battery systems</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+            <span class="text-gray-700">Separator design & cathode optimization</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+            <span class="text-gray-700">Cell assembly & electrochemical testing</span>
+          </li>
+        </ul>
+        <div class="mt-6 pt-4 border-t border-gray-100">
+          <div class="flex items-center justify-between text-sm text-gray-500">
+            <span>Expertise Level</span>
+            <span>Advanced</span>
+          </div>
+          <div class="mt-2 w-full bg-gray-200 rounded-full h-2.5">
+            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 95%"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Characterization -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift group border-l-4 border-green-500">
+        <div class="flex items-center justify-center w-16 h-16 bg-green-100 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+          <i class="fas fa-microscope text-3xl text-green-600"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-4 text-gray-800">Characterization</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start">
+            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+            <span class="text-gray-700">XRD, SEM/TEM, XPS, BET, Raman, FTIR</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+            <span class="text-gray-700">EIS, CV, GITT; in-situ analysis; long-cycle testing</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+            <span class="text-gray-700">DSC, TGA; mechanical/thermal shrinkage mapping</span>
+          </li>
+        </ul>
+        <div class="mt-6 pt-4 border-t border-gray-100">
+          <div class="flex items-center justify-between text-sm text-gray-500">
+            <span>Expertise Level</span>
+            <span>Advanced</span>
+          </div>
+          <div class="mt-2 w-full bg-gray-200 rounded-full h-2.5">
+            <div class="bg-green-600 h-2.5 rounded-full" style="width: 90%"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Leadership & Writing -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift group border-l-4 border-indigo-500">
+        <div class="flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+          <i class="fas fa-pen-fancy text-3xl text-indigo-600"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-4 text-gray-800">Leadership & Writing</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start">
+            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+            <span class="text-gray-700">OBE accreditation & curriculum design</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+            <span class="text-gray-700">Cross-disciplinary team leadership</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+            <span class="text-gray-700">Technical writing: papers, reports, patents</span>
+          </li>
+        </ul>
+        <div class="mt-6 pt-4 border-t border-gray-100">
+          <div class="flex items-center justify-between text-sm text-gray-500">
+            <span>Expertise Level</span>
+            <span>Proficient</span>
+          </div>
+          <div class="mt-2 w-full bg-gray-200 rounded-full h-2.5">
+            <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 85%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Additional Skills -->
+    <div class="mt-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+      <h3 class="text-2xl font-bold mb-6 text-center">Complementary Skills</h3>
+      <div class="grid md:grid-cols-4 gap-4 text-center">
+        <div class="bg-white/10 rounded-xl p-4 backdrop-blur-sm">
+          <i class="fas fa-chart-bar text-2xl mb-2"></i>
+          <p class="text-sm font-medium">Data Analysis</p>
+        </div>
+        <div class="bg-white/10 rounded-xl p-4 backdrop-blur-sm">
+          <i class="fas fa-project-diagram text-2xl mb-2"></i>
+          <p class="text-sm font-medium">Project Management</p>
+        </div>
+        <div class="bg-white/10 rounded-xl p-4 backdrop-blur-sm">
+          <i class="fas fa-comments text-2xl mb-2"></i>
+          <p class="text-sm font-medium">Scientific Communication</p>
+        </div>
+        <div class="bg-white/10 rounded-xl p-4 backdrop-blur-sm">
+          <i class="fas fa-lightbulb text-2xl mb-2"></i>
+          <p class="text-sm font-medium">Problem Solving</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
-	  <section id="skills" class="py-20 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-6">
-		<div class="text-center mb-16">
-		<h2 class="text-4xl font-bold gradient-text mb-4">Skills Related to Battery Technology</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-gray-50 rounded-xl p-6 border-t-4 border-blue-600">
-          <h3 class="text-lg font-bold mb-3">Fabrication and Testing</h3>
-          <ul class="text-gray-700 text-sm space-y-1 list-disc pl-5">
-            <li>Li‑ion, Li‑S, Na‑ion systems</li>
-            <li>Separator design & cathode optimization</li>
-            <li>Cell assembly & electrochemical testing</li>
-          </ul>
-        </div>
-        <div class="bg-gray-50 rounded-xl p-6 border-t-4 border-green-600">
-          <h3 class="text-lg font-bold mb-3">Characterization</h3>
-          <ul class="text-gray-700 text-sm space-y-1 list-disc pl-5">
-            <li>XRD, SEM/TEM, XPS, BET, Raman, FTIR</li>
-            <li>EIS, CV, GITT; in‑situ analysis; long‑cycle testing</li>
-            <li>DSC, TGA; mechanical/thermal shrinkage mapping</li>
-          </ul>
-        </div>
-        <div class="bg-gray-50 rounded-xl p-6 border-t-4 border-indigo-600">
-          <h3 class="text-lg font-bold mb-3">Leadership & Writing</h3>
-          <ul class="text-gray-700 text-sm space-y-1 list-disc pl-5">
-            <li>OBE accreditation & curriculum design</li>
-            <li>Cross‑disciplinary team leadership</li>
-            <li>Technical writing: papers, reports, patents</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
 <!-- PUBLICATIONS WITH CHARTS -->
 <section id="publications" class="py-20 bg-gray-50">
   <div class="max-w-7xl mx-auto px-6">
@@ -1099,7 +1351,6 @@ document.getElementById('cv-download').addEventListener('click', async (e) => {
 </body>
 
 </html>
-
 
 
 
